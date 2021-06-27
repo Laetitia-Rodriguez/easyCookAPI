@@ -1,4 +1,6 @@
 api_platform:
+    title: 'EasyCook API'
+    description: 'Products and recipes for EasyCook API'
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']
     patch_formats:
