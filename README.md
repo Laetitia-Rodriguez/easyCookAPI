@@ -7,6 +7,9 @@ But in a second step, it will be possible to enrich the data.
 
 Stack : PHP, Symfony, JS, React, Redux
 
+- easyCookAPI
+- easyCookFront
+
 ## Minimum Valuable Product
 
 ### Homepage :
