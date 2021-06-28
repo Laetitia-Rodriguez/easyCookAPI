@@ -28,11 +28,11 @@ Interface to select all the ingredients available :
   
 - When clicking on a group, the sub-groups appear : vegetables, meat, poultry, fish...
 
-When clicking on a sub-group, the picture of each ingredient and its name appear.
+- When clicking on a sub-group, the picture of each ingredient and its name appear.
 
-When clicking on an ingredient, it changes its appareance to indicate that it is selected.
+- When clicking on an ingredient, it changes its appareance to indicate that it is selected.
 
-When submitting, with the selected ingredients, it leads to the results page.
+- When submitting, with the selected ingredients, it leads to the results page.
 
 ### Results page :
 
@@ -66,9 +66,9 @@ When submitting, with the selected ingredients, it leads to the results page.
 
 - List of ma favourites recipes, with the picture and name like on results page, plus a small heart icone
   
-When clicking on a recipe, it leads to the recipe page.
+- When clicking on a recipe, it leads to the recipe page.
 
-When clicking on a heart icone colorful (favourite), it deletes the recipe from the favourites list.
+- When clicking on a heart icone colorful (favourite), it deletes the recipe from the favourites list.
 
 ### Page "manage my cupboard"
 
@@ -76,4 +76,4 @@ When clicking on a heart icone colorful (favourite), it deletes the recipe from 
 
 ### Page "search by food cupboard"
 
-When user is authenticated, if there are favourite products in his profile, it appears in this page by default.
+- When user is authenticated, if there are favourite products in his profile, it appears in this page by default.
