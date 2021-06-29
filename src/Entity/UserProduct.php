@@ -3,14 +3,14 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\ProfileRecipeRepository;
+use App\Repository\UserProductRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ApiResource()
- * @ORM\Entity(repositoryClass=ProfileRecipeRepository::class)
+ * @ORM\Entity(repositoryClass=UserProductRepository::class)
  */
-class ProfileRecipe
+class UserProduct
 {
     /**
      * @ORM\Id
@@ -22,38 +22,38 @@ class ProfileRecipe
     /**
      * @ORM\Column(type="integer")
      */
-    private $profile_id;
+    private $user_id;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $recipe_id;
+    private $product_id;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getProfileId(): ?int
+    public function getUserId(): ?int
     {
-        return $this->profile_id;
+        return $this->user_id;
     }
 
-    public function setProfileId(int $profile_id): self
+    public function setUserId(int $user_id): self
     {
-        $this->profile_id = $profile_id;
+        $this->user_id = $user_id;
 
         return $this;
     }
 
-    public function getRecipeId(): ?int
+    public function getProductId(): ?int
     {
-        return $this->recipe_id;
+        return $this->product_id;
     }
 
-    public function setRecipeId(int $recipe_id): self
+    public function setProductId(int $product_id): self
     {
-        $this->recipe_id = $recipe_id;
+        $this->product_id = $product_id;
 
         return $this;
     }

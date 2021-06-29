@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Profile;
+use App\Entity\UserRecipe;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Profile|null find($id, $lockMode = null, $lockVersion = null)
- * @method Profile|null findOneBy(array $criteria, array $orderBy = null)
- * @method Profile[]    findAll()
- * @method Profile[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method UserRecipe|null find($id, $lockMode = null, $lockVersion = null)
+ * @method UserRecipe|null findOneBy(array $criteria, array $orderBy = null)
+ * @method UserRecipe[]    findAll()
+ * @method UserRecipe[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ProfileRepository extends ServiceEntityRepository
+class UserRecipeRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Profile::class);
+        parent::__construct($registry, UserRecipe::class);
     }
 
     // /**
-    //  * @return Profile[] Returns an array of Profile objects
+    //  * @return UserRecipe[] Returns an array of UserRecipe objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class ProfileRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Profile
+    public function findOneBySomeField($value): ?ProfileRecipe
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.exampleField = :val')

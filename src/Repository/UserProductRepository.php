@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\ProfileProduct;
+use App\Entity\UserProduct;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method ProfileProduct|null find($id, $lockMode = null, $lockVersion = null)
- * @method ProfileProduct|null findOneBy(array $criteria, array $orderBy = null)
- * @method ProfileProduct[]    findAll()
- * @method ProfileProduct[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method UserProduct|null find($id, $lockMode = null, $lockVersion = null)
+ * @method UserProduct|null findOneBy(array $criteria, array $orderBy = null)
+ * @method UserProduct[]    findAll()
+ * @method UserProduct[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ProfileProductRepository extends ServiceEntityRepository
+class UserProductRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, ProfileProduct::class);
+        parent::__construct($registry, UserProduct::class);
     }
 
     // /**
-    //  * @return ProfileProduct[] Returns an array of ProfileProduct objects
+    //  * @return UserProduct[] Returns an array of UserProduct objects
     //  */
     /*
     public function findByExampleField($value)
