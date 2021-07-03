@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Repository\RecipeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -11,12 +13,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 
+
 /**
  * @ApiResource(
- *      normalizationContext={"groups"={"read"}},
- *      denormalizationContext={"groups"={"write"}}
+ *      normalizationContext={"groups"={"recipe: read", "product:read"}},
+ *      denormalizationContext={"groups"={"recipe:write"}}
  * )
  * @ORM\Entity(repositoryClass=RecipeRepository::class)
+ * @ApiFilter(SearchFilter::class, properties={"name": "partial", "ingredientsList": "partial", "steps" : "partial"})
  */
 class Recipe
 {
@@ -24,45 +28,47 @@ class Recipe
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"read", "write"})
+     * @Groups({"recipe: read", "recipe: write"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"read", "write"})
+     * @Groups({"recipe: read", "product:read", "recipe: write"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"read", "write"})
+     * @Groups({"recipe: read", "recipe: write"})
      */
     private $pictureFileName;
 
     /**
      * @ORM\Column(type="string", length=3500)
-     * @Groups({"read", "write"})
+     * @Groups({"recipe: read", "recipe: write"})
      */
     private $ingredientsList;
 
     /**
      * @ORM\Column(type="string", length=3500, nullable=true)
-     * @Groups({"read", "write"})
+     * @Groups({"recipe: read", "recipe: write"})
      */
     private $steps;
 
     /**
      * @ApiSubresource(maxDepth=1)
      * @ORM\ManyToMany(targetEntity=Product::class, mappedBy="recipes", fetch="EXTRA_LAZY")
-     * @Groups({"read", "write"})
+     * 
+     * @Groups({"recipe: read"})
+     * @ApiSubresource
      */
     private $products;
 
     public function __construct()
     {
         $this->products = new ArrayCollection();
-        $this->product = new ArrayCollection();
+        /* $this->product = new ArrayCollection();*/
     }
 
     public function getId(): ?int
@@ -126,10 +132,10 @@ class Recipe
         return $this->products;
     }
 
-    public function getProduct(): Collection
+    /* public function getProduct(): Collection
     {
         return $this->product;
-    }
+    } */
 
     public function addProduct(Product $product): self
     {

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -11,8 +12,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
- *     normalizationContext={"groups"={"read"}},
- *     denormalizationContext={"groups"={"write"}}
+ *     normalizationContext={"groups"={"product:read", "recipe: read"}},
+ *     denormalizationContext={"groups"={"product: write"}}
  * )
  * @ORM\Entity(repositoryClass=ProductRepository::class)
  */
@@ -22,63 +23,66 @@ class Product
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"read", "write"})
+     * @Groups({"product:read", "product: write"})
      * 
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"read", "write"})
+     * @Groups({"product:read", "recipe: read", "product: write"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"read", "write"})
+     * @Groups({"product:read", "product: write"})
      */
     private $pictureFileName;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"read", "write"})
+     * @Groups({"product:read", "product: write"})
      */
     private $foodGroup;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"read", "write"})
+     * @Groups({"product:read", "product: write"})
      */
     private $foodGroupId;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"read", "write"})
+     * @Groups({"product:read", "product: write"})
      */
     private $foodSubgroup;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"read", "write"})
+     * @Groups({"product:read", "product: write"})
      */
     private $foodSubgroupId;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
-     * @Groups({"read", "write"})
+     * @Groups({"product:read", "product: write"})
      */
     private $status;
 
     /**
      * @ORM\ManyToMany(targetEntity=Recipe::class, inversedBy="products")
-     * @Groups({"read", "write"})
+     * 
+     * @Groups({"product:read"})
+     * @ApiSubresource
+     * 
      */
     private $recipes;
 
     public function __construct()
     {
         $this->recipes = new ArrayCollection();
-        $this->recipe = new ArrayCollection();
+       /*  $this->recipe = new ArrayCollection(); */
     }
 
     
@@ -178,10 +182,10 @@ class Product
     {
         return $this->recipes;
     }
-    public function getRecipe(): Collection
+    /* public function getRecipe(): Collection
     {
         return $this->recipe;
-    }
+    }*/
 
     public function addRecipe(Recipe $recipe): self
     {
