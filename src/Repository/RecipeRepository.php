@@ -47,38 +47,4 @@ class RecipeRepository extends ServiceEntityRepository
         ;
     }
     */
-
-    /**
-     * @param string $keyword
-     *
-     * @return array
-     */
-    public function findByKeyword($keyword)
-    {
-        return $this->createQueryBuilder('a')
-            ->where('a.steps LIKE :keyword')
-            ->orWhere('a.name LIKE :keyword')
-            ->setParameter('keyword', '%'.$keyword.'%')
-            ->getQuery()
-            ->getResult()
-        ;
-    } 
-
-    /**
-     * Find recipes by keyword
-     * 
-     */
-    public function findByKeywordDql($keyword)
-    {
-        $entityManager = $this->getEntityManager();
-
-        $query = $entityManager->createQuery(
-        'SELECT a
-        FROM App\Entity\Recipe a 
-        WHERE a.steps LIKE %:keyword%
-        OR a.name LIKE %:keyword%')        
-        ->setParameter('keyword', '%'.' '.$keyword.' '.'%');
-    
-        return $query->getResult();
-    }
 }

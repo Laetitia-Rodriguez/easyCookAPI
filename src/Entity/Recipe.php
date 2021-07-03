@@ -68,7 +68,6 @@ class Recipe
     public function __construct()
     {
         $this->products = new ArrayCollection();
-        /* $this->product = new ArrayCollection();*/
     }
 
     public function getId(): ?int
@@ -132,10 +131,6 @@ class Recipe
         return $this->products;
     }
 
-    /* public function getProduct(): Collection
-    {
-        return $this->product;
-    } */
 
     public function addProduct(Product $product): self
     {

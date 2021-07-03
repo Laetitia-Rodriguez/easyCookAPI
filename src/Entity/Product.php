@@ -82,7 +82,6 @@ class Product
     public function __construct()
     {
         $this->recipes = new ArrayCollection();
-       /*  $this->recipe = new ArrayCollection(); */
     }
 
     
@@ -182,10 +181,6 @@ class Product
     {
         return $this->recipes;
     }
-    /* public function getRecipe(): Collection
-    {
-        return $this->recipe;
-    }*/
 
     public function addRecipe(Recipe $recipe): self
     {
