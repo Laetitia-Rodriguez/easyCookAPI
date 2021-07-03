@@ -3,11 +3,19 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Repository\RecipeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *      normalizationContext={"groups"={"read"}},
+ *      denormalizationContext={"groups"={"write"}}
+ * )
  * @ORM\Entity(repositoryClass=RecipeRepository::class)
  */
 class Recipe
@@ -16,28 +24,46 @@ class Recipe
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"read", "write"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read", "write"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"read", "write"})
      */
-    private $picture_file_name;
+    private $pictureFileName;
 
     /**
      * @ORM\Column(type="string", length=3500)
+     * @Groups({"read", "write"})
      */
-    private $ingredients_list;
+    private $ingredientsList;
 
     /**
      * @ORM\Column(type="string", length=3500, nullable=true)
+     * @Groups({"read", "write"})
      */
     private $steps;
+
+    /**
+     * @ApiSubresource(maxDepth=1)
+     * @ORM\ManyToMany(targetEntity=Product::class, mappedBy="recipes", fetch="EXTRA_LAZY")
+     * @Groups({"read", "write"})
+     */
+    private $products;
+
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+        $this->product = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -58,24 +84,24 @@ class Recipe
 
     public function getPictureFileName(): ?string
     {
-        return $this->picture_file_name;
+        return $this->pictureFileName;
     }
 
-    public function setPictureFileName(?string $picture_file_name): self
+    public function setPictureFileName(?string $pictureFileName): self
     {
-        $this->picture_file_name = $picture_file_name;
+        $this->pictureFileName = $pictureFileName;
 
         return $this;
     }
 
     public function getIngredientsList(): ?string
     {
-        return $this->ingredients_list;
+        return $this->ingredientsList;
     }
 
-    public function setIngredientsList(string $ingredients_list): self
+    public function setIngredientsList(string $ingredientsList): self
     {
-        $this->ingredients_list = $ingredients_list;
+        $this->ingredientsList = $ingredientsList;
 
         return $this;
     }
@@ -88,6 +114,38 @@ class Recipe
     public function setSteps(?string $steps): self
     {
         $this->steps = $steps;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Product[]
+     */
+    public function getProducts(): Collection
+    {
+        return $this->products;
+    }
+
+    public function getProduct(): Collection
+    {
+        return $this->product;
+    }
+
+    public function addProduct(Product $product): self
+    {
+        if (!$this->products->contains($product)) {
+            $this->products[] = $product;
+            $product->addRecipe($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(Product $product): self
+    {
+        if ($this->products->removeElement($product)) {
+            $product->removeRecipe($this);
+        }
 
         return $this;
     }

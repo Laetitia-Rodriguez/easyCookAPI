@@ -4,10 +4,16 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     normalizationContext={"groups"={"read"}},
+ *     denormalizationContext={"groups"={"write"}}
+ * )
  * @ORM\Entity(repositoryClass=ProductRepository::class)
  */
 class Product
@@ -16,44 +22,66 @@ class Product
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"read", "write"})
+     * 
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read", "write"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"read", "write"})
      */
-    private $picture_file_name;
+    private $pictureFileName;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read", "write"})
      */
-    private $food_group;
+    private $foodGroup;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"read", "write"})
      */
-    private $food_group_id;
+    private $foodGroupId;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read", "write"})
      */
-    private $food_subgroup;
+    private $foodSubgroup;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"read", "write"})
      */
-    private $food_subgroup_id;
+    private $foodSubgroupId;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"read", "write"})
      */
     private $status;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Recipe::class, inversedBy="products")
+     * @Groups({"read", "write"})
+     */
+    private $recipes;
+
+    public function __construct()
+    {
+        $this->recipes = new ArrayCollection();
+        $this->recipe = new ArrayCollection();
+    }
+
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -73,60 +101,60 @@ class Product
 
     public function getPictureFileName(): ?string
     {
-        return $this->picture_file_name;
+        return $this->pictureFileName;
     }
 
-    public function setPictureFileName(?string $picture_file_name): self
+    public function setPictureFileName(?string $pictureFileName): self
     {
-        $this->picture_file_name = $picture_file_name;
+        $this->pictureFileName = $pictureFileName;
 
         return $this;
     }
 
     public function getFoodGroup(): ?string
     {
-        return $this->food_group;
+        return $this->foodGroup;
     }
 
-    public function setFoodGroup(string $food_group): self
+    public function setFoodGroup(string $foodGroup): self
     {
-        $this->food_group = $food_group;
+        $this->foodGroup = $foodGroup;
 
         return $this;
     }
 
     public function getFoodGroupId(): ?int
     {
-        return $this->food_group_id;
+        return $this->foodGroupId;
     }
 
-    public function setFoodGroupId(int $food_group_id): self
+    public function setFoodGroupId(int $foodGroupId): self
     {
-        $this->food_group_id = $food_group_id;
+        $this->foodGroupId = $foodGroupId;
 
         return $this;
     }
 
     public function getFoodSubgroup(): ?string
     {
-        return $this->food_subgroup;
+        return $this->foodSubgroup;
     }
 
-    public function setFoodSubgroup(string $food_subgroup): self
+    public function setFoodSubgroup(string $foodSubgroup): self
     {
-        $this->food_subgroup = $food_subgroup;
+        $this->foodSubgroup = $foodSubgroup;
 
         return $this;
     }
 
     public function getFoodSubgroupId(): ?int
     {
-        return $this->food_subgroup_id;
+        return $this->foodSubgroupId;
     }
 
-    public function setFoodSubgroupId(int $food_subgroup_id): self
+    public function setFoodSubgroupId(int $foodSubgroupId): self
     {
-        $this->food_subgroup_id = $food_subgroup_id;
+        $this->foodSubgroupId = $foodSubgroupId;
 
         return $this;
     }
@@ -139,6 +167,34 @@ class Product
     public function setStatus(?int $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Recipe[]
+     */
+    public function getRecipes(): Collection
+    {
+        return $this->recipes;
+    }
+    public function getRecipe(): Collection
+    {
+        return $this->recipe;
+    }
+
+    public function addRecipe(Recipe $recipe): self
+    {
+        if (!$this->recipes->contains($recipe)) {
+            $this->recipes[] = $recipe;
+        }
+
+        return $this;
+    }
+
+    public function removeRecipe(Recipe $recipe): self
+    {
+        $this->recipes->removeElement($recipe);
 
         return $this;
     }
