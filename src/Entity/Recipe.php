@@ -20,7 +20,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *      denormalizationContext={"groups"={"recipe:write"}}
  * )
  * @ORM\Entity(repositoryClass=RecipeRepository::class)
- * @ApiFilter(SearchFilter::class, properties={"name": "partial", "ingredientsList": "partial", "steps" : "partial"})
+ * @ApiFilter(SearchFilter::class, properties={"ingredientsList": "partial"})
  */
 class Recipe
 {
