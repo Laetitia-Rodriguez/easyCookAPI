@@ -1,0 +1,96 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="394" height="279" view_box="0 0 394 279"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:link="http://www.w3.org/1999/xlink">\n\n<desc>Généré par Mocodo 2.3.7 le Mon, 21 Jun 2021 08:26:23</desc>
+
+<rect id="frame" x="0" y="0" width="394" height="279" fill="#f7f7f7" stroke="none" stroke-width="0"/>
+
+<!-- Association is tagged as1 -->
+<line x1="205" y1="68" x2="69" y2="68" stroke="#8073ac" stroke-width="2"/>
+<text x="118" y="85.0" fill="#b35806" font-family="Verdana" font-size="12">0,N</text>
+<line x1="69" y1="211" x2="69" y2="68" stroke="#8073ac" stroke-width="2"/>
+<text x="74.0" y="144" fill="#b35806" font-family="Verdana" font-size="12">1,N</text>
+<g id="association-is tagged as1">
+	<path d="M 99 43 a 14 14 90 0 1 14 14 V 68 h -88 V 57 a 14 14 90 0 1 14 -14" fill="#b2abd2" stroke="#b2abd2" stroke-width="0"/>
+	<path d="M 113 68.0 v 11 a 14 14 90 0 1 -14 14 H 39 a 14 14 90 0 1 -14 -14 V 68.0 H 88" fill="#d8daeb" stroke="#d8daeb" stroke-width="0"/>
+	<rect x="25" y="43" width="88" height="50" fill="none" rx="14" stroke="#8073ac" stroke-width="2"/>
+	<line x1="25" y1="68" x2="113" y2="68" stroke="#8073ac" stroke-width="1"/>
+	<text x="32" y="60.7" fill="#000000" font-family="Verdana" font-size="12">is tagged as</text>
+</g>
+
+<!-- Association is tagged as -->
+<line x1="205" y1="68" x2="341" y2="68" stroke="#8073ac" stroke-width="2"/>
+<text x="270" y="85.0" fill="#b35806" font-family="Verdana" font-size="12">0,N</text>
+<line x1="341" y1="211" x2="341" y2="68" stroke="#8073ac" stroke-width="2"/>
+<text x="346.0" y="178" fill="#b35806" font-family="Verdana" font-size="12">0,N</text>
+<g id="association-is tagged as">
+	<path d="M 371 43 a 14 14 90 0 1 14 14 V 68 h -88 V 57 a 14 14 90 0 1 14 -14" fill="#b2abd2" stroke="#b2abd2" stroke-width="0"/>
+	<path d="M 385 68.0 v 11 a 14 14 90 0 1 -14 14 H 311 a 14 14 90 0 1 -14 -14 V 68.0 H 88" fill="#d8daeb" stroke="#d8daeb" stroke-width="0"/>
+	<rect x="297" y="43" width="88" height="50" fill="none" rx="14" stroke="#8073ac" stroke-width="2"/>
+	<line x1="297" y1="68" x2="385" y2="68" stroke="#8073ac" stroke-width="1"/>
+	<text x="304" y="60.7" fill="#000000" font-family="Verdana" font-size="12">is tagged as</text>
+</g>
+
+<!-- Association is tagged as2 -->
+<line x1="69" y1="211" x2="205" y2="211" stroke="#8073ac" stroke-width="2"/>
+<text x="134" y="228.0" fill="#b35806" font-family="Verdana" font-size="12">0,N</text>
+<line x1="341" y1="211" x2="205" y2="211" stroke="#8073ac" stroke-width="2"/>
+<text x="283" y="228.0" fill="#b35806" font-family="Verdana" font-size="12">0,N</text>
+<g id="association-is tagged as2">
+	<path d="M 235 186 a 14 14 90 0 1 14 14 V 211 h -88 V 200 a 14 14 90 0 1 14 -14" fill="#b2abd2" stroke="#b2abd2" stroke-width="0"/>
+	<path d="M 249 211.0 v 11 a 14 14 90 0 1 -14 14 H 175 a 14 14 90 0 1 -14 -14 V 211.0 H 88" fill="#d8daeb" stroke="#d8daeb" stroke-width="0"/>
+	<rect x="161" y="186" width="88" height="50" fill="none" rx="14" stroke="#8073ac" stroke-width="2"/>
+	<line x1="161" y1="211" x2="249" y2="211" stroke="#8073ac" stroke-width="1"/>
+	<text x="168" y="203.7" fill="#000000" font-family="Verdana" font-size="12">is tagged as</text>
+</g>
+
+<!-- Entity PROFILE -->
+<g id="entity-PROFILE">
+	<g id="frame-PROFILE">
+		<rect x="310" y="186" width="62" height="25" fill="#fdb863" stroke="#fdb863" stroke-width="0"/>
+		<rect x="310" y="211.0" width="62" height="25" fill="#fee0b6" stroke="#fee0b6" stroke-width="0"/>
+		<rect x="310" y="186" width="62" height="50" fill="none" stroke="#e08214" stroke-width="2"/>
+		<line x1="310" y1="211" x2="372" y2="211" stroke="#e08214" stroke-width="1"/>
+	</g>
+	<text x="315" y="203.7" fill="#000000" font-family="Verdana" font-size="12">PROFILE</text>
+	<text x="315" y="228.8" fill="#000000" font-family="Verdana" font-size="12">name</text>
+	<line x1="315" y1="231" x2="350" y2="231" stroke="#000000" stroke-width="1"/>
+</g>
+
+<!-- Entity PRODUCT -->
+<g id="entity-PRODUCT">
+	<g id="frame-PRODUCT">
+		<rect x="145" y="9" width="120" height="25" fill="#fdb863" stroke="#fdb863" stroke-width="0"/>
+		<rect x="145" y="34.0" width="120" height="93" fill="#fee0b6" stroke="#fee0b6" stroke-width="0"/>
+		<rect x="145" y="9" width="120" height="118" fill="none" stroke="#e08214" stroke-width="2"/>
+		<line x1="145" y1="34" x2="265" y2="34" stroke="#e08214" stroke-width="1"/>
+	</g>
+	<text x="175" y="26.7" fill="#000000" font-family="Verdana" font-size="12">PRODUCT</text>
+	<text x="150" y="51.7" fill="#000000" font-family="Verdana" font-size="12">name</text>
+	<line x1="150" y1="54" x2="185" y2="54" stroke="#000000" stroke-width="1"/>
+	<text x="150" y="68.8" fill="#000000" font-family="Verdana" font-size="12">picture_file_name</text>
+	<text x="150" y="85.8" fill="#000000" font-family="Verdana" font-size="12">food_group</text>
+	<text x="150" y="102.8" fill="#000000" font-family="Verdana" font-size="12">food_subgroup</text>
+	<text x="150" y="119.8" fill="#000000" font-family="Verdana" font-size="12">status</text>
+</g>
+
+<!-- Entity RECIPE -->
+<g id="entity-RECIPE">
+	<g id="frame-RECIPE">
+		<rect x="9" y="152" width="120" height="25" fill="#fdb863" stroke="#fdb863" stroke-width="0"/>
+		<rect x="9" y="177.0" width="120" height="93" fill="#fee0b6" stroke="#fee0b6" stroke-width="0"/>
+		<rect x="9" y="152" width="120" height="118" fill="none" stroke="#e08214" stroke-width="2"/>
+		<line x1="9" y1="177" x2="129" y2="177" stroke="#e08214" stroke-width="1"/>
+	</g>
+	<text x="46" y="169.7" fill="#000000" font-family="Verdana" font-size="12">RECIPE</text>
+	<text x="14" y="194.7" fill="#000000" font-family="Verdana" font-size="12">name</text>
+	<line x1="14" y1="197" x2="49" y2="197" stroke="#000000" stroke-width="1"/>
+	<text x="14" y="211.8" fill="#000000" font-family="Verdana" font-size="12">picture_file_name</text>
+	<text x="14" y="228.8" fill="#000000" font-family="Verdana" font-size="12">ingredients_list</text>
+	<text x="14" y="245.8" fill="#000000" font-family="Verdana" font-size="12">steps</text>
+	<text x="14" y="262.8" fill="#000000" font-family="Verdana" font-size="12">favorite</text>
+</g>
+</svg>
