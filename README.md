@@ -5,7 +5,7 @@ EasyCook is an app offering simple recipes from ingredients available in my food
 It's an app that I intend for private use, also the list of ingredients and recipes are very personal and not very detailed.
 But in a second step, it will be possible to enrich the data.
 
-Stack : PHP, Symfony, JS, React, Redux
+Stack : PHP, Symfony, APIPlatform, JS, React, Redux
 
 - easyCookAPI
 - easyCookFront
@@ -45,6 +45,15 @@ Interface to select all the ingredients available :
 
 
 ## Version 2
+
+### Sign up page
+
+- form to sign up
+
+
+### Sign in page
+
+- form to sign in
 
 ### Homepage
 
