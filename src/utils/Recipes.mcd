@@ -1,0 +1,7 @@
+is tagged as1, 0N PRODUCT, 1N RECIPE
+PRODUCT: name, picture_file_name, food_group, food_subgroup, status
+is tagged as, 0N PRODUCT, 0N PROFILE
+
+RECIPE: name, picture_file_name, ingredients_list, steps, favorite
+is tagged as2, ON RECIPE, ON PROFILE
+PROFILE: name

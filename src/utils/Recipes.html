@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta charset='utf-8'>
+<style>
+  #mld .relation { font-variant: small-caps; font-weight: bold }
+  #mld .primary { text-decoration: underline }
+  #mld .foreign { font-style: oblique }
+  #mld .normal { }
+</style>
+</head>
+<body>
+<div id='mld'>
+<div>
+  <span class='relation'>is tagged as</span> (
+    <span class='foreign primary'>name</span>,
+    <span class='foreign primary'>name.1</span>
+  )
+</div>
+<div>
+  <span class='relation'>PRODUCT</span> (
+    <span class='primary'>name</span>,
+    <span class='normal'>picture_file_name</span>,
+    <span class='normal'>food_group</span>,
+    <span class='normal'>food_subgroup</span>,
+    <span class='normal'>status</span>
+  )
+</div>
+<div>
+  <span class='relation'>is tagged as</span> (
+    <span class='foreign primary'>name</span>,
+    <span class='foreign primary'>name.1</span>
+  )
+</div>
+<div>
+  <span class='relation'>RECIPE</span> (
+    <span class='primary'>name</span>,
+    <span class='normal'>picture_file_name</span>,
+    <span class='normal'>ingredients_list</span>,
+    <span class='normal'>steps</span>,
+    <span class='normal'>favorite</span>
+  )
+</div>
+<div>
+  <span class='relation'>is tagged as</span> (
+    <span class='foreign primary'>name</span>,
+    <span class='foreign primary'>name.1</span>
+  )
+</div>
+<!--
+<div>
+  <span class='relation'>PROFILE</span> (
+    <span class='primary'>name</span>
+  )
+</div>
+-->
+</div>
+</body>
+</html>
