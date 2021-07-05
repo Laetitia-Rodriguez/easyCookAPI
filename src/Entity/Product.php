@@ -73,7 +73,8 @@ class Product
     /**
      * @ORM\ManyToMany(targetEntity=Recipe::class, inversedBy="products")
      * 
-     * @Groups({"product:read"})
+     * // @Groups({"product:read"})
+     * 
      * @ApiSubresource
      * 
      */
