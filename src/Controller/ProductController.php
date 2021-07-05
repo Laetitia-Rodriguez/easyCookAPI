@@ -25,4 +25,3 @@ class ProductController extends AbstractController
             return $this->json($foodGroups, Response::HTTP_OK, [], ['groups' => 'product:read']);
     }
 } 
-    
