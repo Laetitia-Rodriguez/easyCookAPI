@@ -30,32 +30,26 @@ class ProductRepository extends ServiceEntityRepository
         $conn = $this->getEntityManager()->getConnection(); 
 
         $sql=
-        "SELECT DISTINCT product.food_group 
+        "SELECT DISTINCT product.food_group, product.food_group_id
         FROM product
         ORDER BY food_group_id ASC";
         $groups = $conn->executeQuery($sql);
         return $groups ->fetchAllAssociative(\Doctrine\ORM\Query::HYDRATE_ARRAY); 
     }
  
-    // /**
-    // *@return Subgroups[] Returns an array of Product objects
-    // */ 
-
-    public function findAllSubgroups($foodGroupName)
+    public function findAllSubgroups()
     {
         // To SQL instead of Doctrine DQL with Symfony
-        $conn = $this->getEntityManager($foodGroupName)->getConnection($foodGroupName); 
+        $conn = $this->getEntityManager()->getConnection(); 
 
-        // The backtics are very important around $foodGroupName
         $sql=
-        "SELECT DISTINCT product.food_subgroup 
+        "SELECT DISTINCT product.food_subgroup, product.food_group_id, product.food_subgroup_id 
         FROM product
-        WHERE product.food_group = '$foodGroupName'
         ORDER BY food_subgroup_id ASC";
         $subgroups = $conn->executeQuery($sql);
         return $subgroups ->fetchAllAssociative(\Doctrine\ORM\Query::HYDRATE_ARRAY); 
-    } 
-   
+    }
+
     /*
     public function findOneBySomeField($value): ?Product
     {
@@ -67,6 +61,4 @@ class ProductRepository extends ServiceEntityRepository
         ;
     }
     */
-
-    
 }
