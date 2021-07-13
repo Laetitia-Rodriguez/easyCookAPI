@@ -34,4 +34,14 @@ class ProductController extends AbstractController
                 $foodSubgroups = $productRepository->findAllSubgroups();
                 return $this->json($foodSubgroups, Response::HTTP_OK, [], ['groups' => 'product:read']);
         }
+
+     /**
+     * Get products
+     * 
+     * @Route("/api/products", name="products", methods="GET")
+     */
+    public function listProducts(ProductRepository $productRepository) {
+        $products = $productRepository->findAllProducts();
+        return $this->json($products, Response::HTTP_OK, [], ['groups' => 'product:read']);
+}
 } 

@@ -36,6 +36,10 @@ class ProductRepository extends ServiceEntityRepository
         $groups = $conn->executeQuery($sql);
         return $groups ->fetchAllAssociative(\Doctrine\ORM\Query::HYDRATE_ARRAY); 
     }
+
+    // /**
+    // *@return Subgroups[] Returns an array of Product objects
+    // */
  
     public function findAllSubgroups()
     {
@@ -48,6 +52,23 @@ class ProductRepository extends ServiceEntityRepository
         ORDER BY food_subgroup_id ASC";
         $subgroups = $conn->executeQuery($sql);
         return $subgroups ->fetchAllAssociative(\Doctrine\ORM\Query::HYDRATE_ARRAY); 
+    }
+
+    // /**
+    // *@return Products[] Returns an array of Product objects
+    // */
+
+    public function findAllProducts()
+    {
+        // To SQL instead of Doctrine DQL with Symfony
+        $conn = $this->getEntityManager()->getConnection(); 
+
+        $sql=
+        "SELECT *
+        FROM product
+        ORDER BY food_group_id ASC";
+        $groups = $conn->executeQuery($sql);
+        return $groups ->fetchAllAssociative(\Doctrine\ORM\Query::HYDRATE_ARRAY); 
     }
 
     /*
