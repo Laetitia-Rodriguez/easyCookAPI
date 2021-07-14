@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * @method Product|null find($id, $lockMode = null, $lockVersion = null)
@@ -20,21 +21,55 @@ class ProductRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Product[] Returns an array of Product objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    // *@return Groups[] Returns an array of Product objects
+    // */
+
+    public function findAllGroups()
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        // To SQL instead of Doctrine DQL with Symfony
+        $conn = $this->getEntityManager()->getConnection(); 
+
+        $sql=
+        "SELECT DISTINCT product.food_group, product.food_group_id
+        FROM product
+        ORDER BY food_group_id ASC";
+        $groups = $conn->executeQuery($sql);
+        return $groups ->fetchAllAssociative(\Doctrine\ORM\Query::HYDRATE_ARRAY); 
     }
-    */
+
+    // /**
+    // *@return Subgroups[] Returns an array of Product objects
+    // */
+ 
+    public function findAllSubgroups()
+    {
+        // To SQL instead of Doctrine DQL with Symfony
+        $conn = $this->getEntityManager()->getConnection(); 
+
+        $sql=
+        "SELECT DISTINCT product.food_subgroup, product.food_group_id, product.food_subgroup_id 
+        FROM product
+        ORDER BY food_subgroup_id ASC";
+        $subgroups = $conn->executeQuery($sql);
+        return $subgroups ->fetchAllAssociative(\Doctrine\ORM\Query::HYDRATE_ARRAY); 
+    }
+
+    // /**
+    // *@return Products[] Returns an array of Product objects
+    // */
+
+    public function findAllProducts()
+    {
+        // To SQL instead of Doctrine DQL with Symfony
+        $conn = $this->getEntityManager()->getConnection(); 
+
+        $sql=
+        "SELECT *
+        FROM product
+        ORDER BY food_group_id ASC";
+        $groups = $conn->executeQuery($sql);
+        return $groups ->fetchAllAssociative(\Doctrine\ORM\Query::HYDRATE_ARRAY); 
+    }
 
     /*
     public function findOneBySomeField($value): ?Product
@@ -47,6 +82,4 @@ class ProductRepository extends ServiceEntityRepository
         ;
     }
     */
-
-    
 }
