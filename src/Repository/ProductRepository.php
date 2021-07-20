@@ -30,7 +30,7 @@ class ProductRepository extends ServiceEntityRepository
         $conn = $this->getEntityManager()->getConnection(); 
 
         $sql=
-        "SELECT DISTINCT product.food_group, product.food_group_id
+        "SELECT DISTINCT food_group, food_group_id
         FROM product
         ORDER BY food_group_id ASC";
         $groups = $conn->executeQuery($sql);
@@ -71,6 +71,22 @@ class ProductRepository extends ServiceEntityRepository
         return $groups ->fetchAllAssociative(\Doctrine\ORM\Query::HYDRATE_ARRAY); 
     }
 
+    // /**
+    // *@replace Product[] Change the product's status from 0(non available) to 1(available)
+    // */
+
+    public function setFavoriteProduct($selectedFavoriteId)
+    {
+        // To SQL instead of Doctrine DQL with Symfony
+        $conn = $this->getEntityManager($selectedFavoriteId)->getConnection($selectedFavoriteId); 
+
+        $sql=
+        "UPDATE product
+        SET `status` = 1
+        WHERE id = $selectedFavoriteId";
+        $success = $conn->executeQuery($sql);
+        return $success; 
+    }
     /*
     public function findOneBySomeField($value): ?Product
     {
