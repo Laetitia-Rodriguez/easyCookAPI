@@ -40,8 +40,18 @@ class ProductController extends AbstractController
      * 
      * @Route("/api/products", name="products", methods="GET")
      */
-    public function listProducts(ProductRepository $productRepository) {
+        public function listProducts(ProductRepository $productRepository) {
         $products = $productRepository->findAllProducts();
         return $this->json($products, Response::HTTP_OK, [], ['groups' => 'product:read']);
-}
+        }
+
+     /**
+     * Update product, status
+     * 
+     * @Route("/api/products/{selectedFavoriteId}/status", name="products", methods="PUT")
+     */
+     public function favoriteProduct(ProductRepository $productRepository, $selectedFavoriteId) {
+        $favoriteProduct = $productRepository->setFavoriteProduct($selectedFavoriteId);
+        return $response = new Response ('Statut changé', Response::HTTP_OK, [], ['groups' => 'product:write']);
+        }
 } 
