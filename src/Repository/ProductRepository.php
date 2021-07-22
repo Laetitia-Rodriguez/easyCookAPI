@@ -82,7 +82,14 @@ class ProductRepository extends ServiceEntityRepository
 
         $sql=
         "UPDATE product
-        SET `status` = 1
+        SET `status` = (
+            /* If status = 0 (unavailable) set to 1 (available) and vice versa
+            (= favorite or not favorite) */
+            CASE
+                WHEN `status` = 0 THEN `status` + 1
+                WHEN `status` = 1 THEN `status` - 1
+            END
+        )
         WHERE id = $selectedFavoriteId";
         $success = $conn->executeQuery($sql);
         return $success; 
