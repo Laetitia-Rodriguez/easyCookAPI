@@ -54,4 +54,15 @@ class ProductController extends AbstractController
         $favoriteProduct = $productRepository->setFavoriteProduct($selectedFavoriteId);
         return $response = new Response ('Statut changé', Response::HTTP_OK, [], ['groups' => 'product:write']);
         }
+
+     /**
+     * Get favorites names products
+     * 
+     * @Route("/api/products/status", name="favorites_names_products", methods="GET")
+     */
+    public function listFavoritesNamesProducts(ProductRepository $productRepository) {
+        $favoritesNames = $productRepository->findAllFavoritesNamesProducts();
+        return $this->json($favoritesNames, Response::HTTP_OK, [], ['groups' => 'product:read']);
+        } 
+
 } 

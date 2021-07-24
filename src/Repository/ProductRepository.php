@@ -94,6 +94,25 @@ class ProductRepository extends ServiceEntityRepository
         $success = $conn->executeQuery($sql);
         return $success; 
     }
+
+    // /**
+    // *@return Products[] Returns an array of favorites Products objects
+    // */
+
+    public function findAllFavoritesNamesProducts()
+    {
+        // To SQL instead of Doctrine DQL with Symfony
+        $conn = $this->getEntityManager()->getConnection(); 
+
+        $sql=
+        "SELECT `name`
+        FROM product
+        WHERE `status` = 1";
+        $favoritesNames = $conn->executeQuery($sql);
+        return $favoritesNames ->fetchAllAssociative(\Doctrine\ORM\Query::HYDRATE_ARRAY); 
+    } 
+
+
     /*
     public function findOneBySomeField($value): ?Product
     {

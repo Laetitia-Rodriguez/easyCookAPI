@@ -16,8 +16,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
+ *      attributes={"pagination_enabled"=false},
  *      normalizationContext={"groups"={"recipe: read", "product:read"}},
- *      denormalizationContext={"groups"={"recipe:write"}}
+ *      denormalizationContext={"groups"={"recipe:write"}},
  * )
  * @ORM\Entity(repositoryClass=RecipeRepository::class)
  * @ApiFilter(SearchFilter::class, properties={"ingredientsList": "partial"})
