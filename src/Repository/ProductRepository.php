@@ -72,7 +72,7 @@ class ProductRepository extends ServiceEntityRepository
     }
 
     // /**
-    // *@replace Product[] Change the product's status from 0(non available) to 1(available)
+    // *@replace Product[] Change the product's status from 0(not available) to 1(available)
     // */
 
     public function setFavoriteProduct($selectedFavoriteId)
@@ -83,7 +83,7 @@ class ProductRepository extends ServiceEntityRepository
         $sql=
         "UPDATE product
         SET `status` = (
-            /* If status = 0 (unavailable) set to 1 (available) and vice versa
+            /* If status = 0 (not available) set to 1 (available) and vice versa
             (= favorite or not favorite) */
             CASE
                 WHEN `status` = 0 THEN `status` + 1
@@ -111,6 +111,23 @@ class ProductRepository extends ServiceEntityRepository
         $favoritesNames = $conn->executeQuery($sql);
         return $favoritesNames ->fetchAllAssociative(\Doctrine\ORM\Query::HYDRATE_ARRAY); 
     } 
+
+    // /**
+    // *@replace Product[] Change the product's status from 1(available) to 0(not available)
+    // */
+
+    public function resetFavoritesProducts()
+    {
+        // To SQL instead of Doctrine DQL with Symfony
+        $conn = $this->getEntityManager()->getConnection(); 
+
+        $sql=
+        "UPDATE product
+        SET `status` = 0
+        WHERE `status` = 1";
+        $successCleaning = $conn->executeQuery($sql);
+        return $successCleaning; 
+    }
 
 
     /*

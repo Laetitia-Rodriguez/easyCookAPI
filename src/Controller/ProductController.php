@@ -58,11 +58,22 @@ class ProductController extends AbstractController
      /**
      * Get favorites names products
      * 
-     * @Route("/api/products/status", name="favorites_names_products", methods="GET")
+     * @Route("/api/products/status/names", name="favorites_names_products", methods="GET")
      */
     public function listFavoritesNamesProducts(ProductRepository $productRepository) {
         $favoritesNames = $productRepository->findAllFavoritesNamesProducts();
         return $this->json($favoritesNames, Response::HTTP_OK, [], ['groups' => 'product:read']);
         } 
+
+   
+     /**
+     * Update products, status from 1 to 0
+     * 
+     * @Route("/api/products/status", name="reset_favorites_products", methods="PUT")
+     */
+    public function deleteFavoritesProduct(ProductRepository $productRepository) {
+      $responseCleaning = $productRepository->resetFavoritesProducts();
+      return $responseCleaning = new Response ('Les favoris ont bien été vidés.', Response::HTTP_OK, [], ['groups' => 'product:write']);
+      }
 
 } 
