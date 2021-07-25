@@ -12,6 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
+ *     attributes={"pagination_enabled"=false},
  *     normalizationContext={"groups"={"product:read", "recipe: read"}},
  *     denormalizationContext={"groups"={"product: write"}}
  * )
